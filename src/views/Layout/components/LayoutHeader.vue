@@ -20,7 +20,7 @@ const scrollToElement = (elementId) => {
           <a href="#" @click.prevent="scrollToElement('introduction')">项目介绍</a>
         </li>
         <li class="home">
-          <a href="#" @click.prevent="scrollToElement('point')">解决痛点</a>
+          <a href="#" @click.prevent="scrollToElement('point')">功能介绍</a>
         </li>
         <li class="home">
           <a href="#" @click.prevent="scrollToElement('function')">3D模型</a>
