@@ -51,48 +51,70 @@ document.addEventListener("DOMContentLoaded", function () {
       <img src="@/assets/images/ruchong1.png" />
     </div>
   </div>
-  <div class="home-second" ref="point" id="point">
+  <div class="home-second" ref="function" id="function">
     <div class="home-second-title">功能介绍</div>
-    <div class="performance-list">
-    <div class="part">
+    <div class="home-second-list">
+      <div class="part">
         <div class="module">
-            <div class="list1">
-                <video class="image-list film" src="@/assets/images/ruanren.png" muted="muted" id="ys-aliengo-video" autoplay="autoplay" loop="loop"></video>
-            </div>
-            <div>
-                <p class="p-title">良好的稳定性能</p>
-                <p class="p-desc">气动控制双脚抱紧管道，在复杂的地下系统稳定爬行</p>
-            </div>
+          <img
+            class="image-list image-list1"
+            src="@/assets/images/worm3.png"
+          />
+          <div>
+            <p class="p-title">良好的稳定性能</p>
+            <p class="p-desc">气动控制双脚抱紧管道，在复杂的地下系统稳定爬行</p>
+          </div>
         </div>
         <div class="module">
-            <div class="image-list image-list2" style="background-image: url('@/assets/images/ruanren.png');"></div>
-            <div>
-                <p class="p-title">监测区域地底情况的监控系统</p>
-                <p class="p-desc">通过巡检次数、范围扩大构建可成长管网数据库，加速地下线缆故障排查进行紧急情况应对</p>
-            </div>
+          <img
+            class="image-list image-list2"
+            src="@/assets/images/ruchong2.png"
+          />
+          <div>
+            <p class="p-title">监测区域地底情况的监控系统</p>
+            <p class="p-desc">
+              通过巡检次数、范围扩大构建可成长管网数据库，加速地下线缆故障排查进行紧急情况应对
+            </p>
+          </div>
         </div>
+      </div>
+      <div class="part">
+        <div class="module">
+          <img
+            class="image-list image-list3"
+            src="@/assets/images/worm2.png"
+          />
+          <div>
+            <p class="p-title">爬行姿态仿生</p>
+            <p class="p-desc">项目灵感：鳞翅目幼虫的爬行姿态运动</p>
+            <p class="p-desc">
+              采用软体机器人技术，为项目赋予了更加灵活的特性。
+            </p>
+            <p class="p-desc">适应狭小空间的能力</p>
+          </div>
+        </div>
+        <div class="module">
+          <img
+            class="image-list image-list4"
+            src="@/assets/images/worm1.png"
+          />
+          <div>
+            <p class="p-title">双模态折纸结构</p>
+            <p class="p-desc">
+              通过不同腔室的吸气或者抽气，来完成机器人的爬行，跳跃等动作
+            </p>
+            <p class="p-desc">
+              两腔室复合:两腔室吸气+单腔室充气=折纸软体驱动器弯曲位移
+            </p>
+            <p class="p-desc">
+              三腔室复合:同时吸气+同时充气=折纸软体驱动器伸缩位移
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="part">
-        <div class="module">
-            <div class="image-list image-list3" style="background-image: url('@/assets/images/ruchong2.png');"></div>
-            <div>
-                <p class="p-title">爬行姿态仿生</p>
-                <p class="p-desc">项目灵感：鳞翅目幼虫的爬行姿态运动</p>
-                <p class="p-desc">采用软体机器人技术，为项目赋予了更加灵活的特性。</p>
-                <p class="p-desc">适应狭小空间的能力</p>
-            </div>
-        </div>
-        <div class="module">
-            <div class="image-list image-list4" style="background-image: url('@/assets/images/total.png');"></div>
-            <div>
-                <p class="p-title">双模态折纸结构</p>
-                <p class="p-desc">通过不同腔室的吸气或者抽气，来完成机器人的爬行，跳跃等动作</p>
-                <p class="p-desc">两腔室复合:两腔室吸气+单腔室充气=折纸软体驱动器弯曲位移</p>
-                <p class="p-desc">三腔室复合:同时吸气+同时充气=折纸软体驱动器伸缩位移</p>
-            </div>
-        </div>
-    </div>
-</div>
+  </div>
+  <div class="home-second-next" ref="performance" id="performance">
     <div class="home-second-title">数据与参数</div>
     <div class="home-second-container">
       <div class="left" ref="left">
@@ -127,7 +149,8 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   </div>
-  <div class="home-third" ref="function" id="function">
+
+  <div class="home-third" ref="model" id="model">
     <div class="home-third-title">3D模型展示</div>
     <iframe
       class="home-third-iframe"
@@ -135,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       allowfullscreen
     ></iframe>
   </div>
-  <div class="home-fouth" ref="contact" id="contact">
+  <div class="home-fouth" ref="cooperate" id="cooperate">
     <div class="home-fouth-title">合作伙伴</div>
     <div class="home-fouth-content-container">
       <div class="home-fouth-content">
@@ -265,74 +288,82 @@ body {
   width: 100%;
   max-width: 100%; /* 确保最大宽度为 100% */
   overflow: hidden; /* 防止内容溢出 */
-  height: 1600px;
+  height: 1700px;
   color: white;
   text-align: center;
   position: relative;
 }
-.performance-list {
-    display: flex;
-    justify-content: space-between;
+.home-second-next {
+  margin-top: 50px;
+  display: flex; // 启用 Flexbox 布局
+  flex-direction: column; // 垂直布局
+  justify-content: center; // 水平居中对齐子元素
+  align-items: center; // 垂直居中对齐子元素
+  width: 100%;
+  max-width: 100%; /* 确保最大宽度为 100% */
+  overflow: hidden; /* 防止内容溢出 */
+  height: 500px;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+.home-second-list {
+  display: flex;
+  justify-content: space-between;
 }
 
-.performance-list .part {
-    width: 480px;
+.home-second-list .part {
+  width: 480px;
+  margin-right: 40px; /* 添加右侧间隔 */
 }
 
-.performance-list .part .module {
-    margin-bottom: 80px;
+.home-second-list .part .module {
+  margin-bottom: 80px;
 }
 
-.performance-list .part .module .image-list {
-    background-size: cover;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    width: 100%;
-    border-radius: 20px;
-    margin-bottom: 30px;
+.home-second-list .part .module .image-list {
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  overflow: hidden; /* 确保图片不会溢出容器 */
 }
 
-.performance-list .part .module .image-list1 {
-    height: 600px;
+.home-second-list .part .module .image-list img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit; /* 继承父容器的圆角 */
 }
 
-.performance-list .part .module .image-list2 {
-    height: 500px;
+.home-second-list .part .module .image-list1 {
+  height: 400px;
 }
 
-.performance-list .part .module .image-list3 {
-    height: 400px;
-    background-image: url("../../assets/images/performance/image-list4.png");
+.home-second-list .part .module .image-list2 {
+  height: 500px;
 }
 
-.performance-list .part .module .image-list4 {
-    height: 500px;
+.home-second-list .part .module .image-list3 {
+  height: 400px;
 }
 
-.performance-list .part .module .p-title {
-    font-size: 24px;
-    line-height: 24px;
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 10px;
+.home-second-list .part .module .image-list4 {
+  width: 600px;
+  height: 300px;
 }
 
-.performance-list .part .module .p-desc {
-    margin: 0;
-    font-size: 16px;
-    color: #383838;
+.home-second-list .part .module .p-title {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
 }
 
-.performance .mainImage {
-    width: 900px;
-    height: 520px;
-    margin: 20px 0;
-    border-radius: 20px;
-}
-
-.performance .mainImage img {
-    width: 100%;
-    height: 100%;
+.home-second-list .part .module .p-desc {
+  margin: 0;
+  font-size: 16px;
+  color: #383838;
 }
 
 .home-second-container {

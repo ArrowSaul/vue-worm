@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router';
 // 定义滚动到指定元素的函数
 const scrollToElement = (elementId) => {
   const targetElement = document.querySelector(`#${elementId}`);
@@ -20,13 +19,16 @@ const scrollToElement = (elementId) => {
           <a href="#" @click.prevent="scrollToElement('introduction')">项目介绍</a>
         </li>
         <li class="home">
-          <a href="#" @click.prevent="scrollToElement('point')">功能介绍</a>
+          <a href="#" @click.prevent="scrollToElement('function')">功能介绍</a>
         </li>
         <li class="home">
-          <a href="#" @click.prevent="scrollToElement('function')">3D模型</a>
+          <a href="#" @click.prevent="scrollToElement('model')">3D模型</a>
         </li>
         <li class="home">
-          <a href="#" @click.prevent="scrollToElement('contact')">合作伙伴</a>
+          <a href="#" @click.prevent="scrollToElement('cooperate')">合作伙伴</a>
+        </li>
+        <li class="home">
+          <router-link to="/map" >在线地图</router-link>
         </li>
       </ul>
     </div>
@@ -76,14 +78,14 @@ const scrollToElement = (elementId) => {
         display: inline-block;
 
         &:hover {
-          color: #3961f4;
-          border-bottom: 1px solid #3961f4;
+          color: #5e5e5e;
+          border-bottom: 1px solid #5e5e5e;
         }
       }
 
       .active {
-        color: #3961f4;
-        border-bottom: 1px solid #3961f4;
+        color: #5e5e5e;
+        border-bottom: 1px solid #5e5e5e;
       }
     }
   }
