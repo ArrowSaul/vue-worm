@@ -4,6 +4,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Layout from '@/views/Layout/Index.vue'
 import Home from '@/views/Home/Index.vue'
 import Map from '@/views/Map/Index.vue'
+import Underground from '@/views/Underground/Index.vue'
+import Information from '@/views/Information/Index.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   //配置path和component之间的映射关系
@@ -21,7 +23,15 @@ const router = createRouter({
     {
       path: '/map',
       component: Map
-    }
+    },
+    {
+      path: '/underground',
+      component: Underground
+    },
+    {
+      path: '/information',
+      component: Information
+    },
   ]
 })
 
