@@ -10,3 +10,10 @@ import LayoutFixed from "./components/LayoutFixed.vue";
   <RouterView />
   <LayoutFooter />
 </template>
+<style lang="scss" scoped>
+.container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+</style>

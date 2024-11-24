@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
     <div class="home-main-right">
-      <img src="@/assets/images/ruchong1.png" />
+      <img style="width: 400px" src="@/assets/images/ruchong1.png" />
     </div>
   </div>
   <div class="home-second" ref="function" id="function">

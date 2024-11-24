@@ -15,7 +15,7 @@
         </dl>
         <dl>
           <dt>下载APP</dt>
-          <dd class="qrcode"><img src="@/assets/images/qrcode.jpg" /></dd>
+          <dd class="qrcode"><img style="width: 80px;" src="@/assets/images/qrcode.jpg" /></dd>
           <dd class="download">
             <span>扫描二维码</span>
             <span>立马下载APP</span>
@@ -117,7 +117,7 @@
 
       &:hover {
         .iconfont {
-          color: $xtxColor;
+          color: #27ba9b;
         }
       }
 

@@ -28,7 +28,7 @@ const scrollToElement = (elementId) => {
           <a href="#" @click.prevent="scrollToElement('cooperate')">合作伙伴</a>
         </li>
         <li class="home">
-          <router-link to="/map" >在线地图</router-link>
+          <router-link to="/flixed/map" >在线地图</router-link>
         </li>
       </ul>
     </div>
@@ -130,7 +130,7 @@ const scrollToElement = (elementId) => {
         top: 0;
         padding: 1px 6px;
         line-height: 1;
-        background: $helpColor;
+        background: #e26237;
         color: #fff;
         font-size: 12px;
         border-radius: 10px;

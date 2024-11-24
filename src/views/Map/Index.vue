@@ -1,15 +1,102 @@
 <script setup >
-import { ref } from "vue";
-
+import { ref,reactive  } from "vue";
 const center = ref({ lng: 0, lat: 0 });
 const zoom = ref(3);
 
+// 8条管道线路的坐标点
+const pipelines = reactive ([
+  {
+    id: 1,
+    color: "green",
+    points: [
+      { lng: 113.649338, lat: 34.805095 },
+      { lng: 113.651449, lat: 34.805925 },
+      { lng: 113.652635, lat: 34.805933 },
+      { lng: 113.654387, lat: 34.80577 },
+      { lng: 113.657028, lat: 34.805896 },
+      { lng: 113.672317, lat: 34.805696 },
+      { lng: 113.672901, lat: 34.800094 },
+    ],
+  },
+  {
+    id: 2,
+    color: "red",
+    points: [
+      { lng: 113.665732, lat: 34.814783 },
+      { lng: 113.665696, lat: 34.811468 },
+      { lng: 113.66566, lat: 34.798849 },
+      { lng: 113.665687, lat: 34.798471 },
+      { lng: 113.663747, lat: 34.798487 },
+      { lng: 113.663549, lat: 34.798686 },
+      { lng: 113.663567, lat: 34.800531 },
+    ],
+  },
+  {
+    id: 3,
+    color: "green",
+    points: [
+      { lng: 113.659004, lat: 34.814828 },
+            { lng: 113.659096, lat: 34.811468 },
+      { lng: 113.65906, lat: 34.798849 },
+      { lng: 113.659087, lat: 34.798471 },
+    ],
+  },
+  {
+    id: 4,
+    color: "red",
+    points: [
+      { lng: 113.654387, lat: 34.814591 },
+      { lng: 113.654369, lat: 34.811568 },
+      { lng: 113.654405, lat: 34.805892 },
+      { lng: 113.654351, lat: 34.803165 },
+      { lng: 113.655986, lat: 34.800675 },
+    ],
+  },
+  {
+    id: 5,
+    color: "red",
+    points: [
+      { lng: 113.654369, lat: 34.811612 },
+      { lng: 113.671706, lat: 34.811375 },
+    ],
+  },
+  {
+    id: 6,
+    color: "green",
+    points: [
+      { lng: 113.650308, lat: 34.812575 },
+      { lng: 113.654315, lat: 34.812546 },
+      { lng: 113.654405, lat: 34.805892 },
+      { lng: 113.654351, lat: 34.803165 },
+      { lng: 113.655986, lat: 34.800675 },
+    ],
+  }
+]);
+//其他
 const handler = ({ BMap, map }) => {
   console.log(BMap, map);
-  center.value.lng = 116.404;
-  center.value.lat = 39.915;
+  center.value.lng = 113.661161;
+  center.value.lat = 34.805844;
   zoom.value = 16;
+  // // 初始化地图和管道
+  // initMap(map);
 };
+const show = ref(false);
+
+const infoWindowClose = () => {
+  show.value = false;
+};
+const infoWindowOpen = () => {
+  show.value = true;
+};
+// 管道显示状态
+const pipelinesVisible = ref(false);
+// const closePolyline = () => {
+//   pipelinesVisible.value = false;
+// };
+// const openPolyline = () => {
+//   pipelinesVisible.value = true;
+// };
 const infoVisible = ref(false);
 // 银屏路信息框的显示状态
 const daoluVisible = ref(false);
@@ -22,39 +109,17 @@ function toggleInfoVisibility() {
   }
 }
 const toggleDaoluVisibility = () => {
-  if (daoluVisible.value) {
-    daoluVisible.value = false;
-  } else {
-    daoluVisible.value = true;
-  }
+  // if (daoluVisible.value) {
+  //   daoluVisible.value = false;
+  // } else {
+  //   daoluVisible.value = true;
+  // }
+  daoluVisible.value = !daoluVisible.value;
+  pipelinesVisible.value = !pipelinesVisible.value; // 更新管道线路的显示状态
 };
 </script>
 <template>
   <div>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-      <div class="navlogo">
-        <a href="" title="RuChong" class="navbar-Logo"></a>
-        <h1>SOFT ROBOT</h1>
-      </div>
-      <div class="navmid">
-        <ul>
-          <li class="navmid-no">
-            <router-link to="/map">巡检概览</router-link>
-          </li>
-          <li class="navmid-no">
-            <router-link to="/underground">地下环境</router-link>
-          </li>
-          <li class="navmid-no">
-            <router-link to="/information">历史信息</router-link>
-          </li>
-          <li class="navmid-no">
-            <router-link to="/">返回首页</router-link>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
     <!-- 信息盒子 -->
     <div v-if="infoVisible" class="infoBox">
       <ul class="biaotou">
@@ -64,7 +129,7 @@ const toggleDaoluVisibility = () => {
         <li>巡检结果</li>
       </ul>
       <ul>
-        <li>2022-12-05</li>
+        <li>2024-10-05</li>
         <li>A07</li>
         <li class="yinpinglu">银屏路</li>
         <li>良好</li>
@@ -78,7 +143,7 @@ const toggleDaoluVisibility = () => {
         "
       />
       <ul>
-        <li>2020-10-05</li>
+        <li>2024-10-06</li>
         <li>A05</li>
         <li class="kexuedadao">科学大道</li>
         <li>良好</li>
@@ -92,7 +157,7 @@ const toggleDaoluVisibility = () => {
         "
       />
       <ul>
-        <li>2022-01-30</li>
+        <li>2024-10-30</li>
         <li>B07</li>
         <li>东风路</li>
         <li>良好</li>
@@ -106,7 +171,7 @@ const toggleDaoluVisibility = () => {
         "
       />
       <ul>
-        <li>2022-12-05</li>
+        <li>2024-11-05</li>
         <li>A07</li>
         <li>南门寨</li>
         <li>良好</li>
@@ -135,9 +200,9 @@ const toggleDaoluVisibility = () => {
       <a href="javascript:void(0)" @click="toggleFullScreen"
         ><span class="quanping"></span>全屏</a
       >
-      <a href="javascript:void(0)" @click="toggleLanguageMenu"
+      <!-- <a href="javascript:void(0)" @click="toggleLanguageMenu"
         ><span class="fanyi">翻译</span></a
-      >
+      > -->
       <div class="yuyan" style="width: 70px">
         <div @click="changeLanguage('indonesian')">
           <a
@@ -215,12 +280,39 @@ const toggleDaoluVisibility = () => {
       class="bm-view"
       :center="center"
       :zoom="zoom"
+      :scroll-wheel-zoom="true"
       @ready="handler"
       mapType="BMAP_SATELLITE_MAP"
-    ></baidu-map>
+      @click="paintPolyline"
+      @rightclick="newPolyline"
+    ><div v-if="pipelinesVisible">
+      <!-- 循环渲染8条管道线路 -->
+      <bm-polyline 
+        :path="pipeline.points"
+        v-for="pipeline in pipelines"
+        :key="pipeline.id"
+        :stroke-color="pipeline.color"
+        :stroke-weight="4"
+        :stroke-opacity="0.8"
+        
+      ></bm-polyline>
+    </div>
+      <bm-marker
+        :position="{ lng: 113.661161, lat: 34.805844 }"
+        :dragging="true"
+        @click="infoWindowOpen"
+      >
+        <bm-info-window
+          :show="show"
+          @close="infoWindowClose"
+          @open="infoWindowOpen"
+          >金水区郑州轻工业大学东风校区北门至东风路文化路交叉口已完成巡检，地下线缆状态良好</bm-info-window
+        >
+      </bm-marker>
+    </baidu-map>
   </div>
 </template>
-<style scoped lang='scss'>
+<style scoped>
 .bm-view {
   width: 100%;
   height: 1000px;
@@ -327,18 +419,6 @@ ul {
   padding-inline-start: 40px;
 }
 /* body样式结束 */
-
-/* 导航栏样式开始 */
-.navbar {
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  height: 64px;
-  width: 100%;
-  border: 0px;
-  padding: 0px;
-  background-color: rgba(27, 23, 23, 0.5);
-}
 .collapsed {
   background-color: rgb(0, 0, 0, 0.7);
   color: hsla(0, 0%, 100%, 0.85);
@@ -360,26 +440,6 @@ ul {
 .single-dropdown-item {
   position: relative;
 }
-.navbar-logo {
-  display: inline-block;
-  background-image: url("@/assets/images/ruchong-logo透明背景.png");
-  background-size: 80px;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  width: 130px;
-  background-position-x: left;
-}
-// .name {
-//   position: absolute;
-//   height: auto;
-//   width: auto;
-//   background-color: rgba(255, 255, 255, 0.5);
-//   /* top: 100px; */
-//   padding: 5px;
-//   border-radius: 4px;
-//   right: 660px;
-//   z-index: 10;
-// }
 .name {
   position: absolute;
   height: auto;
@@ -391,52 +451,12 @@ ul {
   transform: translateX(50%); /* 调整水平对齐 */
   z-index: 100; /* 调整为更高的值 */
 }
-.navlogo h1 {
-  float: left;
-  line-height: 64px;
-}
-.navbar-Logo {
-  display: flex;
-  float: left;
-  background-image: url("@/assets/images/ruchong-logo透明背景.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 60px;
-  height: 60px;
-  margin-left: 60px;
-}
-.navright {
-  display: flex;
-  float: right;
-  color: aliceblue;
-  margin-left: 280px;
-}
-.navmid-no {
-  float: left;
-  width: auto;
-  height: 64px;
-  margin-left: 130px;
-}
-.navmid ul {
-  align-self: center;
-  height: 64px;
-  margin: 0;
-  padding: 0;
-}
-.navmid-no a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-decoration: none;
-  color: aliceblue;
-}
 /* 悬浮开始 */
 /* you侧线缆信息开始 */
 /* you侧线缆信息结束 */
 /* 红绿线缆标注开始 */
 .xianlanbiaozhu {
-  // display: none;
+  /* display: none; */
   position: fixed;
   bottom: 20px;
   left: 20px;
@@ -475,7 +495,7 @@ ul {
   z-index: 999;
   display: flex;
   flex-direction: column;
-  display: none;
+  /* display: none; */
 }
 .dixiaguanwangxinxi {
   margin: 10px;
@@ -634,7 +654,7 @@ progress {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
-  // display: none;
+  /* display: none; */
   z-index: 10;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: opacity 0.3s ease;

@@ -29,7 +29,7 @@ const scrollToElement = (elementId) => {
           <a href="#" @click.prevent="scrollToElement('cooperate')">合作伙伴</a>
         </li>
         <li class="home">
-          <router-link to="/map" >在线地图</router-link>
+          <router-link to="/flixed/map" >在线地图</router-link>
         </li>
       </ul>
     </div>
@@ -76,7 +76,7 @@ const scrollToElement = (elementId) => {
     display: flex;
     text-align: center;
     padding-left: 40px;
-    border-left: 2px solid $xtxColor;
+    border-left: 2px solid #27ba9b;
 
     a {
       width: 38px;
@@ -85,7 +85,7 @@ const scrollToElement = (elementId) => {
       line-height: 1;
 
       &:hover {
-        color: $xtxColor;
+        color: #27ba9b;
       }
     }
   }

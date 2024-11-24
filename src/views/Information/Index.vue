@@ -34,36 +34,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <!-- 导航栏 -->
-  <nav class="navbar">
-    <div class="navlogo">
-      <a href="" title="RuChong" class="navbar-Logo"></a>
-      <h1>SOFT ROBOT</h1>
-    </div>
-    <div class="navmid">
-      <ul>
-        <li class="navmid-no">
-          <router-link to="/map">巡检概览</router-link>
-        </li>
-        <li class="navmid-no">
-          <router-link to="/underground">地下环境</router-link>
-        </li>
-        <li class="navmid-no">
-          <router-link to="/information">历史信息</router-link>
-        </li>
-        <li class="navmid-no">
-          <router-link to="/">返回首页</router-link>
-        </li>
-      </ul>
-    </div>
-  </nav>
   <div class="contain clearfix" style="color: aliceblue">
     <div class="contain-sousuo clearfix">
       <div class="sousuo">
         <input type="text" class="input" placeholder="     请选择计划" />
         <input type="button" value="搜索" class="button-sousuo" />
       </div>
-      <!-- <div class="daochu"></div> -->
       <div class="neirong-box clearfix">
         <div class="neirong-table">
           <div class="table-nav">
@@ -112,96 +88,17 @@ onBeforeUnmount(() => {
           </div>
         </div>
       </div>
-      <div class="page-normal">
-        <span class="page-prev">&lt;</span>
-        <!-- 数字1 代表当前页面-->
-        <span class="page-current">1</span>
-        <a href="#">2</a>
-        .......
-        <a href="#">3</a>
-        <!-- <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                ……
-                <a href="#">199</a>
-                <a href="#">200</a> -->
-        <a href="#">&gt;</a>
-      </div>
     </div>
   </div>
 </template>
 <style scoped lang='scss'>
-.navbar {
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  height: 64px;
-  width: 100%;
-  border: 0px;
-  padding: 0px;
-  background-color: rgba(27, 23, 23, 0.5);
-}
-.navmid {
-  color: aliceblue;
-  margin-left: 140px;
-}
-.navlogo {
-  display: flex;
-}
-.navbar-Logo {
-  display: flex;
-  float: left;
-  background-image: url("../images/ruchong-logo透明背景.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 60px;
-  height: 60px;
-  margin-left: 60px;
-}
-.navlogo h1 {
-  float: left;
-  line-height: 64px;
-}
-.navright {
-  display: flex;
-  float: right;
-  color: aliceblue;
-  margin-left: 280px;
-}
-.navmid-no {
-  /* display: flex; */
-  /* align-self: center; */
-  float: left;
-  width: 80px;
-  height: 64px;
-  margin-left: 180px;
-}
-.navmid ul {
-  /* justify-content: center; */
-  align-self: center;
-  height: 64px;
-  margin: 0;
-  padding: 0;
-  /* line-height: 64px; */
-}
-.navmid-no a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-decoration: none;
-  color: aliceblue;
-}
 /* 导航栏结束 */
 .contain {
   position: relative; /* 添加这行 */
   z-index: 1;
   display: flex;
   flex-direction: column;
-  width: 93%;
+  width: 100%;
   height: 800px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -240,7 +137,7 @@ onBeforeUnmount(() => {
 .neirong-box {
   display: grid;
   /* grid-template-columns: repeat(7, 1fr); */
-  width: 1480px;
+  width: 1800px;
   height: 690px;
   margin: 30px;
   border: 1px solid rgb(50, 43, 43);
@@ -296,7 +193,9 @@ onBeforeUnmount(() => {
   font-family: "楷体";
   font-size: 16px;
 }
-
+// .neirong-table{
+//   width: 100%;
+// }
 .table-nav ul li:nth-child(1) {
   grid-column: 1;
 }
@@ -324,46 +223,6 @@ onBeforeUnmount(() => {
 .table-nav ul li:nth-child(7) {
   grid-column: 7;
 }
-/* 页码开始 */
-/*设置 a 标签的css样式*/
-.page-normal a {
-  border: 1px solid #fff;
-  padding: 5px 7px;
-  color: #fff;
-  margin-left: 20px; /*设置标签 a 之间的间隔*/
-  text-decoration: none; /*去除页码数字下面的下划线*/
-}
-/*设置鼠标经过时 a 标签的css样式*/
-.page-normal a:hover {
-  background-color: #ffbe94;
-}
-
-/*设置整个div的css样式,该样式主要用于设置网页内的省略号 …… 的样式，并且同时设置内容居中显示*/
-.page-normal {
-  color: #fff;
-  text-align: center;
-}
-
-/*设置当前页面的css样式*/
-.page-normal .page-current {
-  color: #050505;
-  background-color: #fff;
-}
-
-/*设置左单括号 < 的css样式*/
-.page-normal .page-prev {
-  color: #fff;
-}
-
-/*进行代码优化，将不同css样式中共有的属性放在一起，有助于提高运行效率*/
-.page-normal a,
-.page-normal a:hover,
-.page-normal .page-prev,
-.page-normal .page-current {
-  border: 1px solid #fff;
-  padding: 5px 7px;
-}
-/* 页码结束 */
 /* html样式开始 */
 .clearfix::after {
   content: "";
